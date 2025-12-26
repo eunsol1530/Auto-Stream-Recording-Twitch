@@ -184,7 +184,7 @@ class TwitchRecorder:
                         if self.osCheck == 0:
                             subprocess.call(self.main_cmd_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Stream will not be processed, please check root path.'])
                         else:
-                            subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"Path to stream is too long. (Max path length is 259 symbols) Stream will not be processed, please check root path."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                            subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "Path to stream is too long. (Max path length is 259 symbols) Stream will not be processed, please check root path."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                     print("Path to stream is too long. (Max path length is 259 symbols) Stream will not be processed, please check root path.")
                     too_long_path = 1
 
@@ -204,7 +204,7 @@ class TwitchRecorder:
                             if self.cmdstate == 2:
                                 subprocess.Popen(['ffmpeg', '-y', '-i', recorded_filename, '-analyzeduration', '2147483647', '-probesize', '2147483647', '-c:v', 'copy', '-c:a', 'copy', '-start_at_zero', '-copyts', os.path.join(stream_dir_path, f)], stdout=None, stderr=None)
                             else:
-                                subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'ffmpeg", '-y', '-i', '"' + recorded_filename + '"', '-analyzeduration', '2147483647', '-probesize', '2147483647', '-c:v', 'copy', '-c:a', 'copy', '-start_at_zero', '-copyts', '"' + os.path.join(stream_dir_path, f) + '"' + self.linuxstatecomma]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                subprocess.run(self.main_cmd_window + ['bash', '-c', f'ffmpeg -y -i "{recorded_filename}" -analyzeduration 2147483647 -probesize 2147483647 -c:v copy -c:a copy -start_at_zero -copyts "{os.path.join(stream_dir_path, f)}"{self.linuxstatecomma}'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                     except Exception as e:
                         print(e)
                 elif(os.path.exists(os.path.join(stream_dir_path, f)) is False and too_long_path == 0):
@@ -222,7 +222,7 @@ class TwitchRecorder:
                             if self.cmdstate == 2:
                                 subprocess.Popen(['ffmpeg', '-y', '-i', recorded_filename, '-analyzeduration', '2147483647', '-probesize', '2147483647', '-c:v', 'copy', '-c:a', 'copy', '-start_at_zero', '-copyts', os.path.join(stream_dir_path, f)], stdout=None, stderr=None)
                             else:
-                                subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'ffmpeg", '-y', '-i', '"' + recorded_filename + '"', '-analyzeduration', '2147483647', '-probesize', '2147483647', '-c:v', 'copy', '-c:a', 'copy', '-start_at_zero', '-copyts', '"' + os.path.join(stream_dir_path, f) + '"' + self.linuxstatecomma]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                subprocess.run(self.main_cmd_window + ['bash', '-c', f'ffmpeg -y -i "{recorded_filename}" -analyzeduration 2147483647 -probesize 2147483647 -c:v copy -c:a copy -start_at_zero -copyts "{os.path.join(stream_dir_path, f)}"{self.linuxstatecomma}'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                     except Exception as e:
                         print(e)
                 elif self.cleanrecorded == 1:
@@ -391,7 +391,7 @@ class TwitchRecorder:
                                         if self.osCheck == 0:
                                             subprocess.call(self.main_cmd_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.'])
                                         else:
-                                            subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                            subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                                     print("Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.")
                                     uncrop = 1
                                 else:
@@ -403,7 +403,7 @@ class TwitchRecorder:
                                         if self.osCheck == 0:
                                             subprocess.call(self.main_cmd_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Title will be cropped, please check root path.'])
                                         else:
-                                            subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"Path to stream is too long. (Max path length is 259 symbols) Title will be cropped, please check root path."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                            subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "Path to stream is too long. (Max path length is 259 symbols) Title will be cropped, please check root path."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                                     print("Path to stream is too long. (Max path length is 259 symbols) Title will be cropped, please check root path.")
 
                             if len(os.path.join(processed_stream_path, filename)) >= 260:
@@ -417,7 +417,7 @@ class TwitchRecorder:
                                         if self.osCheck == 0:
                                             subprocess.call(self.main_cmd_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.'])
                                         else:
-                                            subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                            subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                                     print("Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.")
                                     uncrop = 1
                                 else:
@@ -440,7 +440,7 @@ class TwitchRecorder:
                                         if self.osCheck == 0:
                                             subprocess.call(self.main_cmd_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Title will be cropped, please check root path.'])
                                         else:
-                                            subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"Path to stream is too long. (Max path length is 259 symbols) Title will be cropped, please check root path."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                            subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "Path to stream is too long. (Max path length is 259 symbols) Title will be cropped, please check root path."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                                     print("Path to stream is too long. (Max path length is 259 symbols) Title will be cropped, please check root path.")
 
                             if(os.path.isdir(processed_stream_path) is False):
@@ -482,7 +482,7 @@ class TwitchRecorder:
                                             if self.osCheck == 0:
                                                 subprocess.call(self.main_cmd_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.'])
                                             else:
-                                                subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                                subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                                         print("Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.")
                                         uncrop = 1
                                     else:
@@ -513,7 +513,7 @@ class TwitchRecorder:
                                     if self.osCheck == 0:
                                         subprocess.call(self.main_cmd_window + ['echo', 'An error has occurred. VOD and chat will not be downloaded. Please check them manually.'])
                                     else:
-                                        subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"An error has occurred. VOD and chat will not be downloaded. Please check them manually."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                        subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "An error has occurred. VOD and chat will not be downloaded. Please check them manually."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                                 print('An error has occurred. VOD and chat will not be downloaded. Please check them manually.')
 
                             if self.chatdownload == 1 and filenameError == 0:
@@ -527,7 +527,7 @@ class TwitchRecorder:
                                     if self.cmdstate == 2:
                                         subprocess.Popen(['tcd', "-v", vod_id, "--timezone", self.timezoneName, "-f", "irc,ssa,json", "-o", processed_stream_path], stdout=None, stderr=None)
                                     else:
-                                        subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'tcd", "-v", vod_id, "--timezone", self.timezoneName, "-f", "irc,ssa,json", "-o", '"' + processed_stream_path + '"' + self.linuxstatecomma]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                        subprocess.run(self.main_cmd_window + ['bash', '-c', f'tcd -v {vod_id} --timezone {self.timezoneName} -f irc,ssa,json -o "{processed_stream_path}"{self.linuxstatecomma}'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
                             if self.downloadVOD == 1 and filenameError == 0:
                                 vod_filename = "VOD_" + filename
@@ -541,7 +541,7 @@ class TwitchRecorder:
                                     if self.cmdstate == 2:
                                         subprocess.Popen(['streamlink', '--http-header', 'Authorization=OAuth ' + self.oauth_tok_private, "--hls-segment-threads", str(self.hls_segmentsVOD), "twitch.tv/videos/" + vod_id, self.quality] + self.debug_cmd + ["-o", os.path.join(self.recorded_path, vod_filename)], stdout=None, stderr=None)
                                     else:
-                                        subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'streamlink", '--http-header', 'Authorization=OAuth ' + self.oauth_tok_private, "--hls-segment-threads", str(self.hls_segmentsVOD), "twitch.tv/videos/" + vod_id, self.quality] + self.debug_cmd + ["-o", '"' + os.path.join(self.recorded_path, vod_filename) + '"' + self.linuxstatecomma]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                        subprocess.run(self.main_cmd_window + ['bash', '-c', f'streamlink --http-header Authorization=OAuth {self.oauth_tok_private} --hls-segment-threads {str(self.hls_segmentsVOD)} twitch.tv/videos/{vod_id} {self.quality} {" ".join(self.debug_cmd)} -o "{os.path.join(self.recorded_path, vod_filename)}"{self.linuxstatecomma}'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                         else:
                             stream_title = str(info["data"][0]['title'])
                             stream_title = "".join(x for x in stream_title if x.isalnum() or not x in ["/","\\",":","?","*",'"',">","<","|"]).replace('\n', '')
@@ -571,7 +571,7 @@ class TwitchRecorder:
                                         if self.osCheck == 0:
                                             subprocess.call(self.main_cmd_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.'])
                                         else:
-                                            subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                            subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                                     print("Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.")
                                     uncrop = 1
                                 else:
@@ -627,7 +627,7 @@ class TwitchRecorder:
                                     if self.osCheck == 0:
                                         subprocess.call(self.main_cmd_window + ['echo', 'Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.'])
                                     else:
-                                        subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                        subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                                 print("Path to stream is too long. (Max path length is 259 symbols) Title cannot be cropped, please check root path. Stream will not be processed.")
                                 uncrop = 1
                             else:
@@ -659,7 +659,7 @@ class TwitchRecorder:
                             if self.osCheck == 0:
                                 subprocess.call(self.main_cmd_window + ['echo', 'An error has occurred. VOD and chat will not be downloaded. Please check them manually.'])
                             else:
-                                subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'" + 'echo', '"An error has occurred. VOD and chat will not be downloaded. Please check them manually."; exec bash' + "'"]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                subprocess.run(self.main_cmd_window + ['bash', '-c', 'echo "An error has occurred. VOD and chat will not be downloaded. Please check them manually."; exec bash'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                         print('An error has occurred. VOD and chat will not be downloaded. Please check them manually.')
 
                 print("Recording stream is done. Fixing video file.")
@@ -677,7 +677,7 @@ class TwitchRecorder:
                             if self.cmdstate == 2:
                                 subprocess.Popen(['ffmpeg', '-y', '-i', recorded_filename, '-analyzeduration', '2147483647', '-probesize', '2147483647', '-c:v', 'copy', '-c:a', 'copy', '-start_at_zero', '-copyts', processed_filename], stdout=None, stderr=None)
                             else:
-                                subprocess.call(' '.join(self.main_cmd_window + ['bash', '-c', "'ffmpeg", '-y', '-i', '"' + recorded_filename + '"', '-analyzeduration', '2147483647', '-probesize', '2147483647', '-c:v', 'copy', '-c:a', 'copy', '-start_at_zero', '-copyts', '"' + processed_filename + '"' + self.linuxstatecomma]), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                                subprocess.run(self.main_cmd_window + ['bash', '-c', f'ffmpeg -y -i "{recorded_filename}" -analyzeduration 2147483647 -probesize 2147483647 -c:v copy -c:a copy -start_at_zero -copyts "{processed_filename}"{self.linuxstatecomma}'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                     except Exception as e:
                         print(e)
                 else:
